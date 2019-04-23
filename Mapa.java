@@ -44,9 +44,9 @@ public class Mapa extends MapaPlan{
 				System.out.print((i+1)+" Vacio " );
                 }
 		}
-        Button piña= new Button("Piña");
-        piña.setStyle("-fx-background-image:url('assets/piña.jpg');");
-        return piña;
+        Button pina= new Button("Piña");
+        pina.setStyle("-fx-background-image:url('assets/piña.jpg');");
+        return pina;
     }
     public void Defensa(){
         Condimento d2= new Defensa("Piña",10,5);

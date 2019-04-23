@@ -63,9 +63,6 @@ public abstract class Taco extends Personaje{
 		return resultado;
 	}
 	public void atacar(Personaje enemigo, int i){
-		System.out.println("1)GOLPE NOMAL 2)GOLPE FUERTE");
-		Scanner sc= new Scanner(System.in);
-		int golpe=sc.nextInt();
 		switch(i){
 			case 1:
 			super.atacar(enemigo);
@@ -73,7 +70,7 @@ public abstract class Taco extends Personaje{
 			default:
 			enemigo.setHp(enemigo.getHp()-(golpeF-enemigo.getDefensa())); 
 			setEnergia(getEnergia()-5);
-
+			break;
 		}
 		
 	}

@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.control.RadioButton;
 
@@ -51,16 +52,25 @@ public class SceneBatalla extends Scene{
         switch(o){
 			case "Normal": 
                 l3.setText("¿Como quieres golpear?");
-                vb.getChildren().add(l3);
                 ToggleGroup group = new ToggleGroup();
                 RadioButton button1 = new RadioButton("Normal");
                 button1.setToggleGroup(group);
-                button1.setSelected(true);
+                button1.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+                    public void handle(MouseEvent e){ 
+                        t.atacar(p,1);
+                        imprimirVida();  
+                    }
+                });
                 RadioButton button2 = new RadioButton("Fuerte");
                 button2.setToggleGroup(group);
-                vb.getChildren().add(button1, button2);
-				t.atacar(p);
-                imprimirVida();
+                button2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+                    public void handle(MouseEvent e){ 
+                        t.atacar(p,2);
+                        imprimirVida();  
+                    }
+                });
+                vb.getChildren().addAll(l3,button1, button2);
+                 
 			break;
 			case "Ataque Especial":
 				l3.setText("Con que habilidad quieres atacar? ");
@@ -121,6 +131,7 @@ public class SceneBatalla extends Scene{
         atacar.getItems().add("Ataque Especial");
         atacar.getItems().add("Condimentos");
 		hb.getChildren().addAll(l1,atacar);
+        hb.getChildren().remove(l3);
         vb.getChildren().add(hb);
         setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
