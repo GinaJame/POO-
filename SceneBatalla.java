@@ -162,7 +162,17 @@ public class SceneBatalla extends Scene{
             setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                     if(ke.getCode() == KeyCode.ENTER) {                                               
-                        main.setScene3(x,y);
+                        String malo=p.getTipo();
+                        switch(malo){
+                            case "Ensalada":
+                                main.setScene4(x,y);
+                            break;
+                            case "HotDog":
+                                main.setScene5(x,y);
+                            break;
+                            default: System.out.println("no aplica");
+                            break;
+                        }
                     }   
                 }
             });

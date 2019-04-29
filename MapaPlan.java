@@ -101,7 +101,7 @@ public abstract class MapaPlan extends Scene {
                 c.setPrefSize(80, 80);
                 if(a==i&&b==j){
                         casilla[a][b]=perso;
-                }else if(((a==b1)&&(b==b2))||((a==a1)&&(b==a2))||((a==d1)&&(b==d2))){
+                }else if((((a==b1)&&(b==b2))||((a==a1)&&(b==a2))||((a==d1)&&(b==d2)))&&((encontroArma==false)||(encontroDefensa==false))){
                     c.setStyle("-fx-background-image:url('assets/int.jpg');");
                     casilla[a][b]=c;
                     

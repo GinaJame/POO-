@@ -1,0 +1,43 @@
+import java.util.Optional;
+import javafx.application.Application;
+import javafx.stage.*;
+import javafx.scene.control.*;
+import javafx.scene.*;
+import javafx.stage.Stage;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.scene.input.*;
+import javafx.event.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.BorderPane;
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+
+public class Mapa3 extends MapaPlan{
+    private Taco taquito;
+    private int morral,sE,sHp;
+
+    public Mapa3(Taco taquito, Main main, int i, int j, Personaje secuaz, Boss boss, int morral,int sHp,int sE){
+       
+       super(taquito, main,4,6,8,5,8,8,i,j,secuaz,boss,morral,sHp,sE);
+       this.taquito=taquito;  
+       this.morral=morral;    
+       this.sE=sE;
+       this.sHp=sHp; 
+    }
+    public void Arma(int morral){
+        this.morral=morral;
+        Condimento c2= new Arma("Salsa Verde",10,7);
+        taquito.addCondimentotoMorral(c2,morral);
+        morral++;
+        super.setM(morral);
+    }
+    public void Defensa(int morral){
+        this.morral=morral;
+        Condimento d2= new Defensa("Piña",10,5);
+        taquito.addCondimentotoMorral(d2,morral);
+        morral++;
+        super.setM(morral);
+    }
+}

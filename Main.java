@@ -14,8 +14,7 @@ import javafx.event.EventHandler;
 public class Main extends Application{
     private Scene intro = new Intro(this);
     private Scene perso= new Persona(this);
-    private Scene mapa;
-    private Scene mapa_2;
+    private Scene mapa,mapa_2,mapa_3;
     private Stage mainStage;
     private Taco taquito;
     private SceneBatalla sb;
@@ -42,9 +41,15 @@ public class Main extends Application{
     }
     public void setScene4(int x1, int y1){
         Personaje secuaz= new Trumpito(); 
-        Boss boss= new Gringa();
+        Boss boss= new HotDog();
         mapa_2 = new Mapa2(taquito,this,x1,y1,secuaz,boss,2,7,4);
         mainStage.setScene(mapa_2);
+    }
+    public void setScene5(int x2, int y2){
+        Personaje secuaz= new Muro(); 
+        Boss boss= new Gringa();
+        mapa_3 = new Mapa3(taquito,this,x2,y2,secuaz,boss,4,5,5);
+        mainStage.setScene(mapa_3);
     }
     public void setTaco(Taco taquito){
         this.taquito=taquito;
