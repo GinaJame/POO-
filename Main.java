@@ -33,15 +33,17 @@ public class Main extends Application{
         mainStage.setScene(perso);
     }
     public void setScene3(int x, int y){
-        Personaje secuaz= new Jitomate(); 
-        Boss boss= new Ensalada();
-        mapa = new Mapa(taquito, this,x,y,secuaz,boss);
-        mainStage.setScene(mapa);
+        if(x==9&&y==9){setScene4(0,0);}else{
+            Personaje secuaz= new Jitomate(); 
+            Boss boss= new Ensalada();
+            mapa = new Mapa(taquito, this,x,y,secuaz,boss,0,8,3);
+            mainStage.setScene(mapa);
+        }     
     }
     public void setScene4(int x1, int y1){
         Personaje secuaz= new Trumpito(); 
         Boss boss= new Gringa();
-        mapa_2 = new Mapa2(taquito,this,x1,y1,secuaz,boss);
+        mapa_2 = new Mapa2(taquito,this,x1,y1,secuaz,boss,2,7,4);
         mainStage.setScene(mapa_2);
     }
     public void setTaco(Taco taquito){
@@ -54,6 +56,7 @@ public class Main extends Application{
         sb= new SceneBatalla(taquito,p,xx,yy,this);
         mainStage.setScene(sb);
     }
+    
 
     
 }

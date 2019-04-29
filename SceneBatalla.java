@@ -12,7 +12,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyCode;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.Button;
 
 public class SceneBatalla extends Scene{
     private Main main;
@@ -52,24 +52,26 @@ public class SceneBatalla extends Scene{
         switch(o){
 			case "Normal": 
                 l3.setText("¿Como quieres golpear?");
-                ToggleGroup group = new ToggleGroup();
-                RadioButton button1 = new RadioButton("Normal");
-                button1.setToggleGroup(group);
+                Button button1 = new Button("Normal");
                 button1.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
                     public void handle(MouseEvent e){ 
-                        t.atacar(p,1);
-                        imprimirVida();  
+                        t.atacar(p,1); 
+                        p.atacar(t);
+                        vb.getChildren().clear();
+                        imprimirVida();
                     }
                 });
-                RadioButton button2 = new RadioButton("Fuerte");
-                button2.setToggleGroup(group);
+                Button button2 = new Button("Fuerte");
                 button2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
                     public void handle(MouseEvent e){ 
-                        t.atacar(p,2);
-                        imprimirVida();  
+                        t.atacar(p,2); 
+                        p.atacar(t);
+                        vb.getChildren().clear();
+                        imprimirVida();
                     }
                 });
                 vb.getChildren().addAll(l3,button1, button2);
+                bp.setCenter(vb);
                  
 			break;
 			case "Ataque Especial":
@@ -87,6 +89,8 @@ public class SceneBatalla extends Scene{
                     String hab= (String) habilidad.getValue();                                                                  
                     op= Character.getNumericValue(hab.charAt(0));
 			            t.atacar(p,t.getespeciales()[op-1]);
+                        p.atacar(t);
+                        vb.getChildren().clear();
                         imprimirVida();
                 }   
             }
@@ -112,17 +116,18 @@ public class SceneBatalla extends Scene{
                         if(ke.getCode() == KeyCode.ENTER) {                                               
                             op= Integer.parseInt(tf.getText());
 			                t.atacar(p,t.getMorral()[op-1],(op-1));
-                            imprimirVida();
+                            p.atacar(t);
+                            vb.getChildren().clear();
+                            imprimirVida();  
                         }   
                     }
                 });
 				break;	
 			default:
 				l3.setText("Pierdes tu turno");
-
-		}
-            
-            
+                p.atacar(t);
+                imprimirVida();  
+		}    
     }
     public void inicio(){
         Label l1= new Label("Como quieres atacar?");
@@ -133,10 +138,12 @@ public class SceneBatalla extends Scene{
 		hb.getChildren().addAll(l1,atacar);
         hb.getChildren().remove(l3);
         vb.getChildren().add(hb);
+        bp.setCenter(vb);
         setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                 if(ke.getCode() == KeyCode.ENTER) {                
                     String opcion= (String) atacar.getValue();
+                    hb.getChildren().clear();
                     golpear(opcion);
                 }
             }

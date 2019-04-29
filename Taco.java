@@ -10,7 +10,7 @@ public abstract class Taco extends Personaje{
 
 	public Taco(String tipo, int hp, int energia, int ataque, int defensa, int golpeF){
 		super(tipo, hp, energia, ataque, defensa);
-		morral= new Condimento[10];
+		morral= new Condimento[6];
 		this.golpeF=golpeF;
 	}
 	
@@ -38,10 +38,10 @@ public abstract class Taco extends Personaje{
 		String resultado="Morral: [";
 		for(int i=0; i<morral.length; i++){
 			if(morral[i]!=null){
-				resultado=resultado+" Condimento: "+morral[i].getNombre()+" puntos: "+morral[i].getPuntos()+",";
+				resultado=resultado+" "+morral[i].getNombre()+" "+morral[i].getPuntos()+",";
 			}
 			else{
-				resultado=resultado+"Vacío, ";
+				resultado=resultado+"V, ";
 			}
 		}
 

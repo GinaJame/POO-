@@ -17,22 +17,23 @@ import javafx.scene.input.KeyEvent;
 public abstract class MapaPlan extends Scene {
     private GridPane m1= new GridPane();
     private BorderPane m2= new BorderPane();
-    private Button c;
+    private Button c,vacio;
     private Button perso= new Button();
-    private Button vacio;
     private Button [][] casilla= new Button[10][10];
     private Main main;
-    private int i,j,b1,b2,a1,a2,d1,d2;
+    private int i,j,b1,b2,a1,a2,d1,d2,primeraVez,primeraVez2,sE,sHp;
     private Taco taquito;
-    private String nom;
+    private String nom, inventario;
     private Button seguir;
-    private int m=0;
+    private HBox abajo;
+    private int morral;
+    private boolean encontroArma,encontroDefensa,entroPelea;
     private Personaje secuaz; 
     private Boss boss;
     private Label mensaje= new Label("Bienvenido al mapa");
 
 
-    public MapaPlan(Taco taquito, Main main,int b1, int b2, int a1, int a2, int d1, int d2, int i, int j, Personaje secuaz, Boss boss){
+    public MapaPlan(Taco taquito, Main main,int b1, int b2, int a1, int a2, int d1, int d2, int i, int j, Personaje secuaz, Boss boss,int morral,int sHp,int sE){
 
        super(new GridPane(),800,900);
        this.main=main;
@@ -45,10 +46,15 @@ public abstract class MapaPlan extends Scene {
        this.d2=d2;
        this.i=i;
        this.j=j;
+       this.morral=morral;
        this.secuaz=secuaz;
-       this.boss=boss;
+       this.boss=boss;     
+       this.sE=sE;
+       this.sHp=sHp; 
        nom=taquito.getTipo();
-       mensaje.setPrefSize(900,50);
+       mensaje.setPrefSize(600,50);
+       primeraVez=i;
+       primeraVez2=j;
        mensaje.setStyle("-fx-background-color:white;");
         switch (nom){
             case "Suadero":
@@ -61,9 +67,29 @@ public abstract class MapaPlan extends Scene {
        perso.setText(nom);
        perso.setPrefSize(90,90);
        pintar(); 
+       Button pushInventario= new Button("Morral");
+       pushInventario.setPrefSize(150,50);
+       pushInventario.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+            public void handle(MouseEvent e){               
+                inventario=taquito.dameInventario();
+                mensaje.setText(inventario);
+                m2.setBottom(abajo);
+            }
+        });
+       Button datos= new Button("Tus datos");
+       datos.setPrefSize(150,50);
+       datos.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+            public void handle(MouseEvent e){               
+                mensaje.setText(taquito.toString());
+                m2.setBottom(abajo);
+            }
+        });
         m2.setCenter(m1);
-        m2.setBottom(mensaje);
-        m2.setStyle("-fx-background-image:url('assets/taqueria.jpg');");
+        abajo= new HBox();
+        abajo.setStyle("fx-background-color:white");
+        abajo.getChildren().addAll(mensaje,pushInventario,datos);
+        m2.setBottom(abajo);
+        m2.setStyle("-fx-background-image:url('assets/taqueria2.jpg');");
         super.setRoot(m2);
     }
     public void pintar(){
@@ -117,21 +143,35 @@ public abstract class MapaPlan extends Scene {
                             casilla[i][j].setStyle("-fx-background-image:url('assets/tacoch.jpg');");break;
                     }
                     casilla[i][j].setText(nom);
-                    if((i==b1)&&(j==b2)){             
-                        main.pelear(secuaz,i,j);
-                    }
                     if((i==9)&&(j==9)){
                         main.pelear(boss,9,9);
                     }
-                    if((i==a1)&&(j==a2)){
-                        casilla[i][j]=Arma();
-                        mensaje.setText("Encontraste un arma");
-                        m2.setBottom(mensaje);
+                    if((primeraVez==0)&&(primeraVez2==0)){
+                        if((i==sHp)&&(j==sHp)){             
+                            SumarHP(sHp);
+                        }
+                        if((i==sE)&&(j==sE)){             
+                            SumarEner(sE);
+                        }
+                        if(((i==b1)&&(j==b2))&&(entroPelea==false)){             
+                            main.pelear(secuaz,i,j);
+                            entroPelea=true;
+                        }
+                        if(((i==a1)&&(j==a2))&&(encontroArma==false)){
+                            Arma(morral);
+                            inventario=taquito.dameInventario();
+                            mensaje.setText("Encontraste un arma: "+inventario);
+                            m2.setBottom(abajo);
+                            encontroArma=true;
+                        }
+                        if(((i==d1)&&(j==d2))&&(encontroDefensa==false)){
+                            Defensa(morral);
+                            inventario=taquito.dameInventario();
+                            mensaje.setText("Encontraste un arma: "+inventario);
+                            m2.setBottom(abajo);
+                            encontroDefensa=true;
+                        }
                     }
-                    if((i==d1)&&(j==d2)){
-                        Defensa();
-                    }
-    
                 }catch(ArrayIndexOutOfBoundsException e){
                     System.out.println("Choco con pared");
                     if(i>=10){i=9;}
@@ -143,6 +183,14 @@ public abstract class MapaPlan extends Scene {
             }
         }); 
     }  
-    public abstract Button Arma();
-    public abstract void Defensa();
+    public void setM(int morral){
+        this.morral=morral;
+    }
+    public int getM(){
+        return morral;
+    }
+    public void SumarHP(int sumHp){taquito.setHp(taquito.getHp()+sumHp);}
+    public void SumarEner(int sumE){taquito.setEnergia(taquito.getEnergia()+sumE);}
+    public abstract void Arma(int x);
+    public abstract void Defensa(int y);
 }

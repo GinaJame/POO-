@@ -15,50 +15,29 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class Mapa extends MapaPlan{
-    private GridPane m1= new GridPane();
-    private Button c;
-    private Button perso= new Button();
-    private Button vacio;
-    private Button [][] casilla= new Button[10][10];
-    private Main main;
-    private int i;
-    private int j;
     private Taco taquito;
-    private String nom;
-    private Button seguir;
-    private int m=0;
+    private int morral,sE,sHp;
 
-    public Mapa(Taco taquito, Main main, int i, int j, Personaje secuaz, Boss boss){
-       super(taquito, main,4,6,8,5,8,8,i,j,secuaz,boss);
-       this.taquito=taquito;       
+    public Mapa(Taco taquito, Main main, int i, int j, Personaje secuaz, Boss boss, int morral,int sHp,int sE){
+       
+       super(taquito, main,4,6,8,5,8,8,i,j,secuaz,boss,morral,sHp,sE);
+       this.taquito=taquito;  
+       this.morral=morral;    
+       this.sE=sE;
+       this.sHp=sHp; 
     }
-    public Button Arma(){
+    public void Arma(int morral){
+        this.morral=morral;
         Condimento c2= new Arma("Salsa Verde",10,7);
-        taquito.addCondimentotoMorral(c2,m);
-        m++;
-        System.out.println("Encontraste una salsa Verde");
-        for(int i=0;i<taquito.getMorral().length;i++){
-			if(taquito.getMorral()[i]!=null){
-				System.out.print((i+1)+" "+taquito.getMorral()[i].getNombre()+" ["+taquito.getMorral()[i].getPuntos()+"] ");
-			}else{
-				System.out.print((i+1)+" Vacio " );
-                }
-		}
-        Button pina= new Button("Piña");
-        pina.setStyle("-fx-background-image:url('assets/piña.jpg');");
-        return pina;
+        taquito.addCondimentotoMorral(c2,morral);
+        morral++;
+        super.setM(morral);
     }
-    public void Defensa(){
+    public void Defensa(int morral){
+        this.morral=morral;
         Condimento d2= new Defensa("Piña",10,5);
-        taquito.addCondimentotoMorral(d2,m);
-        m++;
-        System.out.println("Encontraste una Piña");
-        for(int i=0;i<taquito.getMorral().length;i++){
-			if(taquito.getMorral()[i]!=null){
-				System.out.print((i+1)+" "+taquito.getMorral()[i].getNombre()+" ["+taquito.getMorral()[i].getPuntos()+"] ");
-			}else{
-				System.out.print((i+1)+" Vacio " );
-                }
-		}
+        taquito.addCondimentotoMorral(d2,morral);
+        morral++;
+        super.setM(morral);
     }
 }
