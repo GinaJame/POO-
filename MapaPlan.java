@@ -178,7 +178,14 @@ public abstract class MapaPlan extends Scene {
                     if(i<=-1){i=0;}
                     if(j>=10){j=9;}
                     if(j<=-1){j=0;}
-                    casilla[i][j].setStyle("-fx-background-image:url('assets/tacos.jpg');-fx-background-size: stretch;");
+                    switch (nom){
+            case "Suadero":
+                casilla[i][j].setStyle("-fx-background-image:url('assets/tacos.jpg'); -fx-background-size: stretch;");break;
+            case "Pastor":
+                casilla[i][j].setStyle("-fx-background-image:url('assets/tacop.jpg'); -fx-background-size: stretch;");break;
+            default:
+                casilla[i][j].setStyle("-fx-background-image:url('assets/tacoch.jpg'); -fx-background-size: stretch;");break;
+        }
                 }
             }
         }); 
