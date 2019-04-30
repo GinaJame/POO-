@@ -26,6 +26,7 @@ public class Main extends Application{
         mainStage=primaryStage;
         mainStage.setTitle("CALL OF TACO");
         mainStage.setScene(intro);
+        intro.getStylesheets().add("Styles.css");
         mainStage.show();
     }
     public void setScene2(){

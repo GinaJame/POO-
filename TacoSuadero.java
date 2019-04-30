@@ -11,7 +11,7 @@ public class TacoSuadero extends Taco{
         
         super.setAtaqueEspecial(especial);
         img.setPrefSize(500,300);
-        img.setStyle("-fx-background-image:url('assets/tacos.jpg');");
+        img.setStyle("-fx-background-image:url('assets/tacos.jpg');-fx-background-size: stretch;");
         super.setImg(img);
     }
     

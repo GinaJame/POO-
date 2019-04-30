@@ -1,5 +1,13 @@
 .button{
-    -fx-border-color: transparent;
+    -fx-border-color: #E6B602;
     -fx-background-radius: 0;
+    -fx-background-color: #E6B602;
+}
+.label{
     -fx-background-color: transparent;
+    -fx-text-alignment:justify; 
+    -fx-wrap-text:true; 
+    -fx-font-size: 25;
+    
+    
 }

@@ -4,7 +4,7 @@ public class HotDog extends Boss{
     public HotDog(){
         super("Hot Dog",50,10,10,0,13);
         img.setPrefSize(500,300);
-        img.setStyle("-fx-background-image:url('assets/hotdog.jpg');");
+        img.setStyle("-fx-background-image:url('assets/hotdog.jpg'); -fx-background-size: stretch;");
         super.setImg(img);
     }
     

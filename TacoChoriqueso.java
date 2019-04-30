@@ -11,7 +11,7 @@ public class TacoChoriqueso extends Taco{
         
         super.setAtaqueEspecial(especial);
         img.setPrefSize(500,300);
-        img.setStyle("-fx-background-image:url('assets/tacoch.jpg');");
+        img.setStyle("-fx-background-image:url('assets/tacoch.jpg'); -fx-background-size: stretch;");
         super.setImg(img);
     }
     

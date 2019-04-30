@@ -58,11 +58,11 @@ public abstract class MapaPlan extends Scene {
        mensaje.setStyle("-fx-background-color:white;");
         switch (nom){
             case "Suadero":
-                perso.setStyle("-fx-background-image:url('assets/tacos.jpg');");break;
+                perso.setStyle("-fx-background-image:url('assets/tacos.jpg'); -fx-background-size: stretch;");break;
             case "Pastor":
-                perso.setStyle("-fx-background-image:url('assets/tacop.jpg');");break;
+                perso.setStyle("-fx-background-image:url('assets/tacop.jpg'); -fx-background-size: stretch;");break;
             default:
-                perso.setStyle("-fx-background-image:url('assets/tacoch.jpg');");break;
+                perso.setStyle("-fx-background-image:url('assets/tacoch.jpg'); -fx-background-size: stretch;");break;
         }
        perso.setText(nom);
        perso.setPrefSize(90,90);
@@ -89,7 +89,7 @@ public abstract class MapaPlan extends Scene {
         abajo.setStyle("fx-background-color:white");
         abajo.getChildren().addAll(mensaje,pushInventario,datos);
         m2.setBottom(abajo);
-        m2.setStyle("-fx-background-image:url('assets/taqueria2.jpg');");
+        m2.setStyle("-fx-background-image:url('assets/taqueria2.jpg'); -fx-background-size: stretch;");
         super.setRoot(m2);
     }
     public void pintar(){
@@ -102,7 +102,7 @@ public abstract class MapaPlan extends Scene {
                 if(a==i&&b==j){
                         casilla[a][b]=perso;
                 }else if((((a==b1)&&(b==b2))||((a==a1)&&(b==a2))||((a==d1)&&(b==d2)))&&((encontroArma==false)||(encontroDefensa==false))){
-                    c.setStyle("-fx-background-image:url('assets/int.jpg');");
+                    c.setStyle("-fx-background-image:url('assets/int.jpg'); -fx-background-size: stretch;");
                     casilla[a][b]=c;
                     
                 }else{
@@ -136,11 +136,11 @@ public abstract class MapaPlan extends Scene {
                             }
                     switch (nom){
                         case "Suadero":
-                            casilla[i][j].setStyle("-fx-background-image:url('assets/tacos.jpg');");break;
+                            casilla[i][j].setStyle("-fx-background-image:url('assets/tacos.jpg');-fx-background-size: stretch;");break;
                         case "Pastor":
-                            casilla[i][j].setStyle("-fx-background-image:url('assets/tacop.jpg');");break;
+                            casilla[i][j].setStyle("-fx-background-image:url('assets/tacop.jpg');-fx-background-size: stretch;");break;
                         default:
-                            casilla[i][j].setStyle("-fx-background-image:url('assets/tacoch.jpg');");break;
+                            casilla[i][j].setStyle("-fx-background-image:url('assets/tacoch.jpg');-fx-background-size: stretch;");break;
                     }
                     casilla[i][j].setText(nom);
                     if((i==9)&&(j==9)){
@@ -178,7 +178,7 @@ public abstract class MapaPlan extends Scene {
                     if(i<=-1){i=0;}
                     if(j>=10){j=9;}
                     if(j<=-1){j=0;}
-                    casilla[i][j].setStyle("-fx-background-image:url('assets/tacos.jpg');");
+                    casilla[i][j].setStyle("-fx-background-image:url('assets/tacos.jpg');-fx-background-size: stretch;");
                 }
             }
         }); 

@@ -165,18 +165,18 @@ public class SceneBatalla extends Scene{
                         String malo=p.getTipo();
                         switch(malo){
                             case "Ensalada":
-                                main.setScene4(0,0);
+                                main.setScene4(x,y);
                             break;
                             case "Jitomate":
                                 main.setScene3(x,y);
                             break;
                             case "HotDog":
-                                main.setScene5(0,0);
+                                main.setScene5(x,y);
                             break;
                             case "Trumpito":
                                 main.setScene4(x,y);
                             break;
-                            default: main.setScene5(x,y);
+                            default: System.out.println("no aplica");
                             break;
                         }
                     }   

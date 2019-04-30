@@ -19,7 +19,7 @@ public class Persona extends Scene{
         super(new HBox(),1000,1000);
         Button pastor= new Button("Taco Pastor");
         pastor.setPrefSize(330,1000);
-        pastor.setStyle("-fx-background-image:url('assets/tacop.jpg');");
+        pastor.setStyle("-fx-background-image:url('assets/tacop.jpg');-fx-background-size: stretch;");
         pastor.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
             public void handle(MouseEvent e){   
               Taco taquito= new TacoPastor();
@@ -29,7 +29,7 @@ public class Persona extends Scene{
         });
         Button chori= new Button("Taco Choriqueso");
         chori.setPrefSize(330,1000);
-        chori.setStyle("-fx-background-image:url('assets/tacoch.jpg');");
+        chori.setStyle("-fx-background-image:url('assets/tacoch.jpg');-fx-background-size: stretch;");
         chori.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
             public void handle(MouseEvent e){ 
                 Taco taquito = new TacoChoriqueso(); 
@@ -39,7 +39,7 @@ public class Persona extends Scene{
         });
         Button suadero= new Button("Taco Suadero");
         suadero.setPrefSize(330,1000);
-        suadero.setStyle("-fx-background-image:url('assets/tacos.jpg');");
+        suadero.setStyle("-fx-background-image:url('assets/tacos.jpg'); -fx-background-size: stretch;");
         suadero.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
             public void handle(MouseEvent e){  
                 Taco taquito = new TacoSuadero();  

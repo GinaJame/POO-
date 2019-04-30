@@ -4,7 +4,7 @@ public class Jitomate extends Personaje{
     public Jitomate(){
         super("Jitomate",20,0,3,0);
         img.setPrefSize(500,300);
-        img.setStyle("-fx-background-image:url('assets/jitomate.jpg');");
+        img.setStyle("-fx-background-image:url('assets/jitomate.jpg'); -fx-background-size: stretch;");
         super.setImg(img);
     }
 }
