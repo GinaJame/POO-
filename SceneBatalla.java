@@ -25,7 +25,7 @@ public class SceneBatalla extends Scene{
     private HBox hb= new HBox();
     private Label fin= new Label("GANASTE");
     private TextField tf;
-    private int op,x,y;
+    private int op,x,y,v;
     private ComboBox atacar;
     public SceneBatalla(Taco t, Personaje p, int x, int y, Main main){
         super (new BorderPane(),900,900);
@@ -38,6 +38,7 @@ public class SceneBatalla extends Scene{
         Label titulo= new Label("COMIENZA LA BATALLA");
         titulo.setStyle("-fx-background-color:black;");
         titulo.setPrefSize(900,50);
+        v=p.getHp();
         inicio();
         Label l2=t.getImg();
         Label l5=p.getImg();
@@ -50,32 +51,9 @@ public class SceneBatalla extends Scene{
     }
     public void golpear(String o){
         switch(o){
-			case "Normal": 
-                l3.setText("¿Como quieres golpear?");
-                Button button1 = new Button("Normal");
-                button1.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-                    public void handle(MouseEvent e){ 
-                        t.atacar(p,1); 
-                        p.atacar(t);
-                        vb.getChildren().clear();
-                        imprimirVida();
-                    }
-                });
-                Button button2 = new Button("Fuerte");
-                button2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-                    public void handle(MouseEvent e){ 
-                        t.atacar(p,2); 
-                        p.atacar(t);
-                        vb.getChildren().clear();
-                        imprimirVida();
-                    }
-                });
-                vb.getChildren().addAll(l3,button1, button2);
-                bp.setCenter(vb);
-                 
-			break;
 			case "Ataque Especial":
 				l3.setText("Con que habilidad quieres atacar? ");
+                vb.getChildren().clear();
                 vb.getChildren().add(l3);
                 ComboBox habilidad= new ComboBox<>();
 				for(int i=0;i<t.getespeciales().length;i++){
@@ -108,20 +86,30 @@ public class SceneBatalla extends Scene{
                         vb.getChildren().add(l4);
 					}
 				}
+                Button regresar= new Button("Regresar");
+                regresar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+                    public void handle(MouseEvent e){ 
+                        vb.getChildren().clear();
+                        inicio();
+                    }
+                });
                 tf=new TextField();
-                vb.getChildren().add(tf);
+                vb.getChildren().addAll(tf, regresar);
                 bp.setCenter(vb);
-                setOnKeyPressed(new EventHandler<KeyEvent>() {
+                try{setOnKeyPressed(new EventHandler<KeyEvent>() {
                     public void handle(KeyEvent ke) {
                         if(ke.getCode() == KeyCode.ENTER) {                                               
                             op= Integer.parseInt(tf.getText());
 			                t.atacar(p,t.getMorral()[op-1],(op-1));
                             p.atacar(t);
                             vb.getChildren().clear();
-                            imprimirVida();  
+                            imprimirVida();}
                         }   
-                    }
-                });
+                    });}catch(ArrayIndexOutOfBoundsException e){
+                                l3.setText("Pierdes tu turno");
+                                p.atacar(t);
+                                imprimirVida();
+                            }  
 				break;	
 			default:
 				l3.setText("Pierdes tu turno");
@@ -131,14 +119,33 @@ public class SceneBatalla extends Scene{
     }
     public void inicio(){
         Label l1= new Label("Como quieres atacar?");
+        Button nor = new Button("Normal");
+        nor.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+            public void handle(MouseEvent e){ 
+                t.atacar(p,1); 
+                p.atacar(t);
+                vb.getChildren().clear();
+                imprimirVida();
+            }
+        });
+        Button fue = new Button("Fuerte");
+        fue.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+            public void handle(MouseEvent e){ 
+                t.atacar(p,2); 
+                p.atacar(t);
+                vb.getChildren().clear();
+                imprimirVida();
+            }
+        });
+        HBox golpes=new HBox();
+        golpes.getChildren().addAll(nor,fue);
         atacar= new ComboBox<>();
-        atacar.getItems().add("Normal");
         atacar.getItems().add("Ataque Especial");
         atacar.getItems().add("Condimentos");
-		hb.getChildren().addAll(l1,atacar);
+        vb.getChildren().addAll(l1,golpes,atacar);
+		hb.getChildren().add(vb);
         hb.getChildren().remove(l3);
-        vb.getChildren().add(hb);
-        bp.setCenter(vb);
+        bp.setCenter(hb);
         setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                 if(ke.getCode() == KeyCode.ENTER) {                
@@ -165,16 +172,28 @@ public class SceneBatalla extends Scene{
                         String malo=p.getTipo();
                         switch(malo){
                             case "Ensalada":
-                                main.setScene4(x,y);
+                                main.setScene4(0,0);
                             break;
                             case "Jitomate":
                                 main.setScene3(x,y);
                             break;
-                            case "HotDog":
-                                main.setScene5(x,y);
+                            case "Hot Dog":
+                                main.setScene5(0,0);
                             break;
                             case "Trumpito":
                                 main.setScene4(x,y);
+                            break;
+                            case "Hamburguesa":
+                                main.setScene6(0,0);
+                            break;
+                            case "Pepino":
+                                main.setScene5(x,y);
+                            break;
+                            case "Gringa":
+                                main.setSceneFinal();
+                            break;
+                            case "Muro":
+                                main.setScene6(x,y);
                             break;
                             default: System.out.println("no aplica");
                             break;
@@ -186,8 +205,7 @@ public class SceneBatalla extends Scene{
             vb.getChildren().add(fin);
             bp.setCenter(vb);
             t.setHp(100);
-			//p.setHp(vida);
-            //SceneBatalla(t,p,main);}
-            }
+			p.setHp(v);
+            main.pelear(p,x,y);}
     }   
 }

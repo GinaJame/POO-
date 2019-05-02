@@ -64,7 +64,6 @@ public abstract class MapaPlan extends Scene {
             default:
                 perso.setStyle("-fx-background-image:url('assets/tacoch.jpg'); -fx-background-size: stretch;");break;
         }
-       perso.setText(nom);
        perso.setPrefSize(90,90);
        pintar(); 
        Button pushInventario= new Button("Morral");
@@ -101,10 +100,21 @@ public abstract class MapaPlan extends Scene {
                 c.setPrefSize(80, 80);
                 if(a==i&&b==j){
                         casilla[a][b]=perso;
-                }else if((((a==b1)&&(b==b2))||((a==a1)&&(b==a2))||((a==d1)&&(b==d2)))&&((encontroArma==false)||(encontroDefensa==false))){
-                    c.setStyle("-fx-background-image:url('assets/int.jpg'); -fx-background-size: stretch;");
-                    casilla[a][b]=c;
-                    
+                }else if(((a==a1)&&(b==a2))&&(encontroArma==false)){    
+                        c.setStyle("-fx-background-image:url('assets/int.jpg'); -fx-background-size: stretch;");
+                        casilla[a][b]=c;
+                }else if(((a==d1)&&(b==d2))&&(encontroDefensa==false)){    
+                        c.setStyle("-fx-background-image:url('assets/int.jpg'); -fx-background-size: stretch;");
+                        casilla[a][b]=c;
+                }else if(((a==b1)&&(b==b2))&&(entroPelea==false)){    
+                        c.setStyle("-fx-background-image:url('assets/int.jpg'); -fx-background-size: stretch;");
+                        casilla[a][b]=c;
+                }else if((a==sHp)&&(b==sHp)){             
+                        c.setStyle("-fx-background-image:url('assets/cor.jpg'); -fx-background-size: stretch;");
+                        casilla[a][b]=c;
+                }else if((a==sE)&&(b==sE)){             
+                        c.setStyle("-fx-background-image:url('assets/ray.jpg'); -fx-background-size: stretch;");
+                        casilla[a][b]=c;
                 }else{
                     c.setStyle("-fx-background-color: transparent;");
                     casilla[a][b]=c; 
@@ -149,9 +159,13 @@ public abstract class MapaPlan extends Scene {
                     if((primeraVez==0)&&(primeraVez2==0)){
                         if((i==sHp)&&(j==sHp)){             
                             SumarHP(sHp);
+                            mensaje.setText(taquito.toString());
+                            m2.setBottom(abajo);
                         }
                         if((i==sE)&&(j==sE)){             
                             SumarEner(sE);
+                            mensaje.setText(taquito.toString());
+                            m2.setBottom(abajo);
                         }
                         if(((i==b1)&&(j==b2))&&(entroPelea==false)){             
                             main.pelear(secuaz,i,j);

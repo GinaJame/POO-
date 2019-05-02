@@ -2,7 +2,7 @@ import javafx.scene.control.Label;
 public class TacoPastor extends Taco{
     private Label img= new Label("");
     public TacoPastor(){
-        super("Pastor", 100,20,10,5,17);
+        super("Pastor", 100,20,10,2,17);
         AtaqueEspecial[] especial=new AtaqueEspecial[4];
         especial[0]=new AtaqueEspecial("Carnazo",35);
         especial[1]=new AtaqueEspecial("Lanzar guajillo en los ojos",30);
