@@ -16,19 +16,12 @@ public class Final extends Scene{
     public Final(Main main){
         super(new BorderPane(),1024,700);
         Label titulo= new Label("LOGRASTE VENCER A TODOS TUS ENEMIGOS");
-        Label despedida= new Label("Esta es la historia de Tlaxcalli una tortilla que desea superarse y ser el taco m\u00e1s rico y sexy de la taquer\u00eda para lograrlo deber\u00e1 superar los enemigos mortales de los tacos, los temibles HotDog, la malvada ensalada junto con sus secuazes para finalmente enfretar a su enemiga mortal La Se\u00f1ora Gringa. Unete a est\u00e1 aventura junto a Tlaxcalli para lograr su cometido y terminar de una vez por todas con sus enemigos.");
+        Label despedida= new Label("Felicidades! Gracias a tu ayuda Tlaxcalli logró vencer a sus enemigos y ser la comida más sexy.");
         Button continuar = new Button("CERRAR");
-        continuar.setPrefSize(100,50);
-        continuar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-            public void handle(MouseEvent e){               
-                System.out.println("SE CERRO");
-            }
-        });
+        
         VBox ultimo=new VBox();
         ultimo.getChildren().addAll(titulo,despedida);
         bp.setCenter(ultimo);
-        bp.setBottom(continuar);
-        bp.setAlignment(continuar,Pos.BOTTOM_CENTER);
         bp.setStyle("-fx-background-image:url('assets/fin.jpg'); -fx-background-size: stretch;");
         ultimo.setStyle("-fx-alignment: center; -fx-padding: 30px;");
         titulo.setStyle("-fx-alignment: top-center;");

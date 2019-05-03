@@ -13,8 +13,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import java.io.Serializable;
 
-public class Mapa extends MapaPlan{
+public class Mapa extends MapaPlan implements Serializable{
     private Taco taquito;
     private int morral,sE,sHp;
 

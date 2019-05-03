@@ -13,8 +13,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import java.io.Serializable;
 
-public abstract class MapaPlan extends Scene {
+public abstract class MapaPlan extends Scene implements Serializable{
     private GridPane m1= new GridPane();
     private BorderPane m2= new BorderPane();
     private Button c,vacio;
@@ -27,7 +28,7 @@ public abstract class MapaPlan extends Scene {
     private Button seguir;
     private HBox abajo;
     private int morral;
-    private boolean encontroArma,encontroDefensa,entroPelea;
+    private boolean encontroArma,encontroDefensa,entroPelea,agarroVida,agarroEnergia;
     private Personaje secuaz; 
     private Boss boss;
     private Label mensaje= new Label("Bienvenido al mapa");
@@ -109,10 +110,10 @@ public abstract class MapaPlan extends Scene {
                 }else if(((a==b1)&&(b==b2))&&(entroPelea==false)){    
                         c.setStyle("-fx-background-image:url('assets/int.jpg'); -fx-background-size: stretch;");
                         casilla[a][b]=c;
-                }else if((a==sHp)&&(b==sHp)){             
+                }else if(((a==sHp)&&(b==sHp))&&(agarroVida==false)){             
                         c.setStyle("-fx-background-image:url('assets/cor.jpg'); -fx-background-size: stretch;");
                         casilla[a][b]=c;
-                }else if((a==sE)&&(b==sE)){             
+                }else if(((a==sE)&&(b==sE))&&(agarroEnergia==false)){             
                         c.setStyle("-fx-background-image:url('assets/ray.jpg'); -fx-background-size: stretch;");
                         casilla[a][b]=c;
                 }else{
@@ -157,15 +158,17 @@ public abstract class MapaPlan extends Scene {
                         main.pelear(boss,9,9);
                     }
                     if((primeraVez==0)&&(primeraVez2==0)){
-                        if((i==sHp)&&(j==sHp)){             
+                        if(((i==sHp)&&(j==sHp))&&(agarroVida==false)){             
                             SumarHP(sHp);
                             mensaje.setText(taquito.toString());
                             m2.setBottom(abajo);
+                            agarroVida=true;
                         }
-                        if((i==sE)&&(j==sE)){             
+                        if(((i==sE)&&(j==sE))&&(agarroEnergia==false)){             
                             SumarEner(sE);
                             mensaje.setText(taquito.toString());
                             m2.setBottom(abajo);
+                            agarroEnergia=true;
                         }
                         if(((i==b1)&&(j==b2))&&(entroPelea==false)){             
                             main.pelear(secuaz,i,j);

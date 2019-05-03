@@ -92,8 +92,10 @@ public abstract class Taco extends Personaje{
 		}
 	}
 	public void atacar(Personaje enemigo, AtaqueEspecial AE){
-		enemigo.setHp(enemigo.getHp()-(AE.getPuntosEspeciales()-enemigo.getDefensa()));
-		setEnergia(getEnergia()-3); 
+		if(getEnergia()>=0){enemigo.setHp(enemigo.getHp()-(AE.getPuntosEspeciales()-enemigo.getDefensa()));
+		setEnergia(getEnergia()-3); }else{
+			System.out.println("No tienes suficiente energía");
+		}
 	}
 	public int getNumVidas(){
 		return numVidas;
