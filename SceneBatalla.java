@@ -13,8 +13,15 @@ import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.control.Button;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.IOException;
+import java.io.Serializable;
 
-public class SceneBatalla extends Scene{
+public class SceneBatalla extends Scene implements Serializable{
     private Main main;
     private BorderPane bp=new BorderPane();
     private Label l3= new Label("");
@@ -171,7 +178,7 @@ public class SceneBatalla extends Scene{
                     if(ke.getCode() == KeyCode.ENTER) {                                               
                         String malo=p.getTipo();
                         switch(malo){
-                            case "Ensalada":
+                            case "Ensalada":                               
                                 main.setScene4(0,0);
                             break;
                             case "Jitomate":

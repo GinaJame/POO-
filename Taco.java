@@ -102,8 +102,5 @@ public abstract class Taco extends Personaje{
 	}
 	public void setNumVidas(int numVidas){
 		this.numVidas=numVidas;
-	}
-	
-	
+	}	
 }
-

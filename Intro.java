@@ -42,16 +42,7 @@ public class Intro extends Scene implements Serializable{
         });
         continuar.addEventHandler(MouseEvent.MOUSE_CLICKED,new EventHandler<MouseEvent>(){
 				public void handle(MouseEvent e){
-					try{
-						File selectedFile = new File("mapa.atm");
-						FileInputStream fin = new FileInputStream(selectedFile);
-						ObjectInputStream ois = new ObjectInputStream(fin);
-						m=(MapaPlan) ois.readObject();
-					}catch(IOException ex){
-						ex.printStackTrace();
-					}catch(ClassNotFoundException ex){
-						ex.printStackTrace();
-					}
+					main.mostrar();
 				}
 			}
 		);

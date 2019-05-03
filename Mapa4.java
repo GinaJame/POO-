@@ -18,13 +18,13 @@ public class Mapa4 extends MapaPlan{
     private Taco taquito;
     private int morral,sE,sHp;
 
-    public Mapa4(Taco taquito, Main main, int i, int j, Personaje secuaz, Boss boss, int morral,int sHp,int sE){
+    public Mapa4(/*Taco taquito, Main main, int i, int j, Personaje secuaz, Boss boss, int morral,int sHp,int sE*/){
        
-       super(taquito, main,2,3,5,8,3,9,i,j,secuaz,boss,morral,sHp,sE);
-       this.taquito=taquito;  
+       super(/*taquito, main,2,3,5,8,3,9,i,j,secuaz,boss,morral,sHp,sE*/);
+       /*this.taquito=taquito;  
        this.morral=morral;    
        this.sE=sE;
-       this.sHp=sHp; 
+       this.sHp=sHp; */
     }
     public void Arma(int morral){
         this.morral=morral;

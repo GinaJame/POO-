@@ -33,11 +33,11 @@ public abstract class MapaPlan extends Scene implements Serializable{
     private Boss boss;
     private Label mensaje= new Label("Bienvenido al mapa");
 
-
-    public MapaPlan(Taco taquito, Main main,int b1, int b2, int a1, int a2, int d1, int d2, int i, int j, Personaje secuaz, Boss boss,int morral,int sHp,int sE){
+   
+    public MapaPlan(/*Taco taquito, Main main,int b1, int b2, int a1, int a2, int d1, int d2, int i, int j, Personaje secuaz, Boss boss,int morral,int sHp,int sE*/){
 
        super(new GridPane(),800,900);
-       this.main=main;
+       /*this.main=main;
        this.taquito=taquito;
        this.b1=b1;
        this.b2=b2;
@@ -51,7 +51,7 @@ public abstract class MapaPlan extends Scene implements Serializable{
        this.secuaz=secuaz;
        this.boss=boss;     
        this.sE=sE;
-       this.sHp=sHp; 
+       this.sHp=sHp; */
        nom=taquito.getTipo();
        mensaje.setPrefSize(600,50);
        primeraVez=i;
