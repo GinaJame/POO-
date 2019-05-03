@@ -16,15 +16,15 @@ import javafx.scene.input.KeyEvent;
 
 public class Mapa2 extends MapaPlan{
     private Taco taquito;
-    private int morral;
+    private int morral,sE,sHp;
 
-
-    public Mapa2(/*Taco taquito, Main main, int i, int j, Personaje secuaz, Boss boss,int morral,int sHp,int sE*/){
-    
-       super(/*taquito, main,3,3,6,4,7,7,i,j,secuaz,boss,morral,sHp,sE*/);
-/*this.taquito=taquito;
-        this.morral=morral;*/
+    public Mapa2(Taco taquito, Main main, int i, int j, Personaje secuaz, Boss boss, int morral,int sHp,int sE,boolean encontroArma,boolean encontroDefensa,boolean entroPelea,boolean agarroVida,boolean agarroEnergia){
        
+       super(taquito, main,3,3,6,4,7,7,i,j,secuaz,boss,morral,sHp,sE,encontroArma,encontroDefensa,entroPelea,agarroVida,agarroEnergia);
+       this.taquito=taquito;  
+       this.morral=morral;    
+       this.sE=sE;
+       this.sHp=sHp; 
     }
     public void Arma(int morral){
         this.morral=morral;
@@ -32,7 +32,6 @@ public class Mapa2 extends MapaPlan{
         taquito.addCondimentotoMorral(c2,morral);
         morral++;
         super.setM(morral);
-        
     }
     public void Defensa(int morral){
         this.morral=morral;
@@ -40,6 +39,5 @@ public class Mapa2 extends MapaPlan{
         taquito.addCondimentotoMorral(d2,morral);
         morral++;
         super.setM(morral);
-        
     }
 }

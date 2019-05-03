@@ -19,13 +19,13 @@ public class Mapa extends MapaPlan implements Serializable{
     private Taco taquito;
     private int morral,sE,sHp;
    
-    public Mapa(/*Taco taquito, Main main, int i, int j, Personaje secuaz, Boss boss, int morral,int sHp,int sE*/){
+    public Mapa(Taco taquito, Main main, int i, int j, Personaje secuaz, Boss boss, int morral,int sHp,int sE,boolean encontroArma,boolean encontroDefensa,boolean entroPelea,boolean agarroVida,boolean agarroEnergia){
        
-       super(/*taquito, main,4,6,8,5,8,8,i,j,secuaz,boss,morral,sHp,sE*/);
-       /*this.taquito=taquito;  
+       super(taquito, main,4,6,8,5,8,8,i,j,secuaz,boss,morral,sHp,sE,encontroArma,encontroDefensa,entroPelea,agarroVida,agarroEnergia);
+       this.taquito=taquito;  
        this.morral=morral;    
        this.sE=sE;
-       this.sHp=sHp;*/ 
+       this.sHp=sHp; 
     }
 
     public void Arma(int morral){

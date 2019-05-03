@@ -34,10 +34,10 @@ public abstract class MapaPlan extends Scene implements Serializable{
     private Label mensaje= new Label("Bienvenido al mapa");
 
    
-    public MapaPlan(/*Taco taquito, Main main,int b1, int b2, int a1, int a2, int d1, int d2, int i, int j, Personaje secuaz, Boss boss,int morral,int sHp,int sE*/){
+    public MapaPlan(Taco taquito, Main main,int b1, int b2, int a1, int a2, int d1, int d2, int i, int j, Personaje secuaz, Boss boss,int morral,int sHp,int sE,boolean encontroArma,boolean encontroDefensa,boolean entroPelea,boolean agarroVida,boolean agarroEnergia){
 
        super(new GridPane(),800,900);
-       /*this.main=main;
+       this.main=main;
        this.taquito=taquito;
        this.b1=b1;
        this.b2=b2;
@@ -51,7 +51,7 @@ public abstract class MapaPlan extends Scene implements Serializable{
        this.secuaz=secuaz;
        this.boss=boss;     
        this.sE=sE;
-       this.sHp=sHp; */
+       this.sHp=sHp; 
        nom=taquito.getTipo();
        mensaje.setPrefSize(600,50);
        primeraVez=i;
@@ -111,10 +111,10 @@ public abstract class MapaPlan extends Scene implements Serializable{
                         c.setStyle("-fx-background-image:url('assets/int.jpg'); -fx-background-size: stretch;");
                         casilla[a][b]=c;
                 }else if(((a==sHp)&&(b==sHp))&&(agarroVida==false)){             
-                        c.setStyle("-fx-background-image:url('assets/cor.jpg'); -fx-background-size: stretch;");
+                        c.setStyle("-fx-background-image:url('assets/cor.jpg'); -fx-background-color: transparent; -fx-background-size: stretch;");
                         casilla[a][b]=c;
                 }else if(((a==sE)&&(b==sE))&&(agarroEnergia==false)){             
-                        c.setStyle("-fx-background-image:url('assets/ray.jpg'); -fx-background-size: stretch;");
+                        c.setStyle("-fx-background-image:url('assets/ray.jpg');-fx-background-color: transparent; -fx-background-size: stretch;");
                         casilla[a][b]=c;
                 }else{
                     c.setStyle("-fx-background-color: transparent;");
@@ -134,10 +134,9 @@ public abstract class MapaPlan extends Scene implements Serializable{
                         case UP: j--;  
                             casilla[i][j+1].setStyle("-fx-background-image:none;-fx-background-color: transparent;");
                             casilla[i][j+1].setText(" ");break;
-                        case RIGHT: 
-                            if(i==9&&j==9){main.setScene4(0,0);}else{i++;
+                        case RIGHT: i++;
                             casilla[i-1][j].setStyle("-fx-background-image:none;-fx-background-color: transparent;");
-                            casilla[i-1][j].setText(" ");}break; 
+                            casilla[i-1][j].setText(" ");break; 
                         case DOWN:  j++;
                             casilla[i][j-1].setStyle("-fx-background-image:none;-fx-background-color: transparent;");
                             casilla[i][j-1].setText(" ");break;  

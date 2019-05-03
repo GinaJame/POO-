@@ -10,7 +10,7 @@ public abstract class Taco extends Personaje{
 
 	public Taco(String tipo, int hp, int energia, int ataque, int defensa, int golpeF){
 		super(tipo, hp, energia, ataque, defensa);
-		morral= new Condimento[6];
+		morral= new Condimento[8];
 		this.golpeF=golpeF;
 	}
 	
@@ -68,8 +68,11 @@ public abstract class Taco extends Personaje{
 			super.atacar(enemigo);
 			break;
 			default:
-			enemigo.setHp(enemigo.getHp()-(golpeF-enemigo.getDefensa())); 
-			setEnergia(getEnergia()-5);
+			if(getEnergia()>=3){enemigo.setHp(enemigo.getHp()-(golpeF-enemigo.getDefensa())); 
+			setEnergia(getEnergia()-3);
+			}else{
+				System.out.println("No tienes suficiente energía");
+			}
 			break;
 		}
 		
@@ -92,8 +95,10 @@ public abstract class Taco extends Personaje{
 		}
 	}
 	public void atacar(Personaje enemigo, AtaqueEspecial AE){
-		if(getEnergia()>=0){enemigo.setHp(enemigo.getHp()-(AE.getPuntosEspeciales()-enemigo.getDefensa()));
-		setEnergia(getEnergia()-3); }else{
+		if(getEnergia()>=3){
+		enemigo.setHp(enemigo.getHp()-(AE.getPuntosEspeciales()-enemigo.getDefensa()));
+		setEnergia(getEnergia()-5); 
+		}else{
 			System.out.println("No tienes suficiente energía");
 		}
 	}

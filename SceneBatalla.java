@@ -179,28 +179,28 @@ public class SceneBatalla extends Scene implements Serializable{
                         String malo=p.getTipo();
                         switch(malo){
                             case "Ensalada":                               
-                                main.setScene4(0,0);
+                                main.setScene4(0,0,false,false,false,false,false);
                             break;
                             case "Jitomate":
-                                main.setScene3(x,y);
+                                main.setScene3(x,y,false,false,true,false,false);
                             break;
                             case "Hot Dog":
-                                main.setScene5(0,0);
+                                main.setScene5(0,0,false,false,false,false,false);
                             break;
                             case "Trumpito":
-                                main.setScene4(x,y);
+                                main.setScene4(x,y,false,false,true,false,false);
                             break;
                             case "Hamburguesa":
-                                main.setScene6(0,0);
+                                main.setScene6(0,0,false,false,false,false,false);
                             break;
                             case "Pepino":
-                                main.setScene5(x,y);
+                                main.setScene5(x,y,false,false,true,false,false);
                             break;
                             case "Gringa":
                                 main.setSceneFinal();
                             break;
                             case "Muro":
-                                main.setScene6(x,y);
+                                main.setScene6(x,y,false,false,true,false,false);
                             break;
                             default: System.out.println("no aplica");
                             break;

@@ -24,7 +24,7 @@ public class Persona extends Scene{
             public void handle(MouseEvent e){   
               Taco taquito= new TacoPastor();
               main.setTaco(taquito);                 
-              main.setScene3(0,0);         
+              main.setScene3(0,0,false,false,false,false,false);         
             }
         });
         Button chori= new Button("Taco Choriqueso");
@@ -34,7 +34,7 @@ public class Persona extends Scene{
             public void handle(MouseEvent e){ 
                 Taco taquito = new TacoChoriqueso(); 
                 main.setTaco(taquito);             
-                main.setScene3(0,0);
+                main.setScene3(0,0,false,false,false,false,false);
             }
         });
         Button suadero= new Button("Taco Suadero");
@@ -44,7 +44,7 @@ public class Persona extends Scene{
             public void handle(MouseEvent e){  
                 Taco taquito = new TacoSuadero();  
                 main.setTaco(taquito);           
-                main.setScene3(0,0);
+                main.setScene3(0,0,false,false,false,false,false);
             }
         });
         hb = new HBox(pastor,chori,suadero);

@@ -33,40 +33,41 @@ public class Main extends Application{
         mainStage=primaryStage;
         mainStage.setTitle("CALL OF TACO");
         mainStage.setScene(intro);
+        intro.getStylesheets().add("Styles.css");
         mainStage.show();
         
     }
     public void setScene2(){
         mainStage.setScene(perso);    
     }
-    public void setScene3(int x, int y){
-        if(x==9&&y==9){setScene4(0,0);   
+    public void setScene3(int x, int y,boolean encontroArma,boolean encontroDefensa,boolean entroPelea,boolean agarroVida,boolean agarroEnergia){
+        if(x==9&&y==9){setScene4(0,0,encontroArma,encontroDefensa,entroPelea,agarroVida,agarroEnergia);   
         }else{
             Personaje secuaz= new Jitomate(); 
             Boss boss= new Ensalada();
-            mapa = new Mapa(/*taquito, this,x,y,secuaz,boss,0,7,3*/);
+            mapa = new Mapa(taquito, this,x,y,secuaz,boss,0,7,3,encontroArma,encontroDefensa,entroPelea,agarroVida,agarroEnergia);
             mainStage.setScene(mapa);                     
             guardar(mapa);
         }
     }
-    public void setScene4(int x1, int y1){
+    public void setScene4(int x1, int y1,boolean encontroArma,boolean encontroDefensa,boolean entroPelea,boolean agarroVida,boolean agarroEnergia){
         Personaje secuaz= new Trumpito(); 
         Boss boss= new HotDog();
-        mapa_2 = new Mapa2(/*taquito,this,x1,y1,secuaz,boss,2,5,4*/);
+        mapa_2 = new Mapa2(taquito,this,x1,y1,secuaz,boss,2,5,4,encontroArma,encontroDefensa,entroPelea,agarroVida,agarroEnergia);
         guardar(mapa_2);
         mainStage.setScene(mapa_2);
     }
-    public void setScene5(int x2, int y2){
+    public void setScene5(int x2, int y2,boolean encontroArma,boolean encontroDefensa,boolean entroPelea,boolean agarroVida,boolean agarroEnergia){
         Personaje secuaz= new Pepino(); 
         Boss boss= new Hamburguesa();
-        mapa_3 = new Mapa3(/*taquito,this,x2,y2,secuaz,boss,8,6,3*/);
+        mapa_3 = new Mapa3(taquito,this,x2,y2,secuaz,boss,4,6,3,encontroArma,encontroDefensa,entroPelea,agarroVida,agarroEnergia);
         guardar(mapa_3);
         mainStage.setScene(mapa_3);        
     }
-    public void setScene6(int x3, int y3){
+    public void setScene6(int x3, int y3,boolean encontroArma,boolean encontroDefensa,boolean entroPelea,boolean agarroVida,boolean agarroEnergia){
         Personaje secuaz= new Muro(); 
         Boss boss= new Gringa();
-        mapa_4 = new Mapa4(/*taquito,this,x3,y3,secuaz,boss,4,5,5*/);
+        mapa_4 = new Mapa4(taquito,this,x3,y3,secuaz,boss,6,5,5,encontroArma,encontroDefensa,entroPelea,agarroVida,agarroEnergia);
         guardar(mapa_4);
         mainStage.setScene(mapa_4);        
     }

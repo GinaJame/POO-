@@ -29,8 +29,10 @@ public class Intro extends Scene implements Serializable{
         
         Button iniciar= new Button("NUEVA PARTIDA");
         Button continuar= new Button("CONTINUAR PARTIDA");
-        iniciar.setPrefSize(200,50);
-        continuar.setPrefSize(200,50);
+        iniciar.setPrefSize(512,50);
+        iniciar.setStyle("-fx-background-color:red;");
+        continuar.setPrefSize(512,50);
+        continuar.setStyle("-fx-background-color:green");
         HBox boton= new HBox();
         boton.getChildren().addAll(continuar,iniciar);
         bp.setBottom(boton);
